@@ -22,7 +22,7 @@
 The physical device will **visualise vehicle timetables**. Planned components:
 
 - **Vehicle model box**
-  - A small physical model representing the bus
+  - A physical model representing the bus
 
 - **Gear motor + progress bar**
   - A mechanical progress bar driven by a motor, showing journey progress.
@@ -68,7 +68,7 @@ We’ll have **two main 2D screens**:
 ## 4. Work Distribution For This Week
 
 - **Yidan Gao**  
-  - Build a simple **Unity** setup for the digital twin (two panels: weather + timetable).
+  - Build a basic **Unity** setup for the digital twin (two panels: weather + timetable).
 
 - **Qingshan Luo**  
   - Try using **MKR1010 WiFi** to connect to the **timetable API** and **weather API**.
