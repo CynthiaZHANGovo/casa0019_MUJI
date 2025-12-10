@@ -26,7 +26,7 @@
             grid-column: 1 / -1;
             background-color: #89CFF0; /* Baby Blue */
             color: #fff;
-          padding-left:10px;
+            padding-left: 10px;
         }
         .content {
             display: grid;
@@ -37,14 +37,14 @@
         }
         .text-description {
             word-wrap: break-word;
-          padding:10px;
+            padding: 10px;
         }
         .media {
             display: grid;
             grid-template-rows: 1fr 1fr;
             padding: 4px;
             gap: 5px;
-          align-items: center;
+            align-items: center;
         }
         .footer {
             display: grid;
@@ -53,7 +53,7 @@
             background-color: #88D8B0; /* Mint Green */
             color: #000;
         }
-.footer > div {
+        .footer > div {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,49 +63,83 @@
             height: auto;
         }
         a {
-          weight:bold;
+            font-weight: bold;
             color: #ffffff;
         }
-.title_content {
-    font-size: 1.2em; 
-    font-weight: bold;
-    margin-bottom: 15px; 
-    display: block;
-}
+        .title_content {
+            font-size: 1.2em; 
+            font-weight: bold;
+            margin-bottom: 15px; 
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="grid-container">
         <div class="title">
-            <h1>Noise Data Device</h1>
+            <h1>SkySync_Transit</h1>
         </div>
         <div class="content">
             <div class="text-description">
-             
 
-    <p><span class="title_content">DATASET <br/></span> This Data Device uses the real time noise level from the Connected Environments Lab</p>
+                <p><span class="title_content">DATASET<br/></span>
+                The system integrates bus timetables (108 & 339), live weather conditions, walking-time calculations, and CE course timetable data.  
+                It uses:  
+                <br>• Timetable API & MQTT topics  
+                <br>• Weather + temperature API  
+                <br>• CE class schedule (13:00 end time) for bus recommendation  
+                </p>
 
-    <p><span class="title_content">DATA DEVICE (Physical)<br/></span> The data is visually represented using a color-coding system and a plain language description of various noise threshold. This approach aids users in understanding the impact of noise on their health.</p>
+                <p><span class="title_content">DATA DEVICE (Physical)<br/></span>
+                The physical device includes an ESP8266, rotary angle sensor, MG90S servo pointer, LCD (Grove RGB Backlight), and LED strip (BTF 5V 60LED/m).  
+                <br><br>
+                It visually displays:  
+                • Recommended bus after class  
+                • Walking time based on weather & temperature  
+                • Bus timetable (Aquatic Centre / Stratford)  
+                • Urgency levels via LED color changes  
+                <br><br>
+                The device auto-detects the selected bus (108 or 339) and fetches real-time data using APIs and MQTT.
+                </p>
 
-    <p><span class="title_content">DATA DEVICE (Digital)<br/></span> The Digital Twin of the data device provides additional information. It includes the precise noise level and an interactive chart describing the distribution of noise throughout the day, week, and month for different locations. The displayed information changes based on the user’s selection.</p>
-              <p><span class="title_content">HOW TO<br/></span> Open the App and point it at the screen of the Data Device. The Augmetned information will overlay with the Data Device, tap on the charts to change the visualisation from day to month. Use the dropdown menu to change space.</p>
+                <p><span class="title_content">DATA DEVICE (Digital Twin)<br/></span>
+                The digital twin replicates the physical gauge dashboard and provides:  
+                <br>• Detailed weather info  
+                <br>• Extended bus options  
+                <br>• Travel advice  
+                <br>• Interactive gauge showing pointer movement  
+                <br><br>
+                It also allows users to scan images to switch between different bus-line views.
+                </p>
+
+                <p><span class="title_content">HOW TO USE<br/></span>
+                • Power on the device — bus selection is detected automatically.  
+                • System fetches timetable + weather + walking time.  
+                • LCD shows recommended bus; pointer moves to the correct gauge segment.  
+                • LED strip visualizes urgency.  
+                • Digital twin can be used for expanded views and interaction.  
+                </p>
+
             </div>
+
             <div class="media">
-                <img src="https://github.com/ucl-casa-ce/Open-Gauges/blob/main/Contributed/NoiseGauge/data/img/NoiseGauge.jpg?raw=true" alt="Image">
-                <video src="https://github.com/ucl-casa-ce/Open-Gauges/blob/main/Contributed/NoiseGauge/data/img/NoiseGaugeAR.mp4?raw=true" controls></video>
+                <img src="assets/images/dashboard.png" alt="Device Dashboard Image">
+                <video src="assets/images/demo.mp4" controls></video>
             </div>
         </div>
+
         <div class="footer">
             <div class="footer-title">
                 <h2>CE 2024 - 2025</h2>
             </div>
             <div class="group-name">
-                <p>Group QuietSpaces</p>
+                <p>Group SkySync_Transit</p>
             </div>
             <div class="github-link">
-                <a target=_blank href="https://github.com">GitHub Link</a>
+                <a target="_blank" href="https://github.com/CynthiaZHANGovo/casa0019_MUJI">GitHub Link</a>
             </div>
         </div>
+
     </div>
 </body>
 </html>
