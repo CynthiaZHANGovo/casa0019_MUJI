@@ -1,192 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkySync Transit — Enhanced</title>
+
     <style>
+        /* GENERAL */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, #e8f1f5, #f4f9fb);
             min-height: 100vh;
             margin: 0;
-            background-color: #e9ecef; /* softer neutral background */
-            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
         }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto auto;
-            gap: 0;
-            padding: 0;
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-            width: 72vw;
+        .container {
+            width: 78vw;
+            background: #ffffff;
+            border-radius: 22px;
             overflow: hidden;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+            animation: fadeIn 0.7s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* HEADER */
-        .title {
-            background: linear-gradient(135deg, #7DB8DA 0%, #A3D3E6 100%);
+        .header {
+            background: linear-gradient(135deg, #61a9c9, #8fd4ea);
+            padding: 35px 40px;
             color: #fff;
-            padding: 20px 25px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.18);
         }
-        .title h1 {
+        .header h1 {
             margin: 0;
-            font-size: 2rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         /* CONTENT */
         .content {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
-            gap: 0;
-            background-color: #F5FAFA;
-            color: #000;
-            padding: 20px 20px 30px;
+            background: #f8fbfd;
+            padding: 35px 40px 45px;
+            gap: 32px;
         }
 
-        .text-description {
-            padding-right: 20px;
-            line-height: 1.55;
+        .text-block {
+            line-height: 1.75;
         }
 
-        .title_content {
-            font-size: 1.25em;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #236477;
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #1c5568;
+            margin: 32px 0 14px;
         }
 
-        p {
-            margin-bottom: 18px;
+        .text-block p {
+            margin: 0 0 18px;
+            color: #222;
+            font-size: 1.05rem;
         }
 
-        /* MEDIA AREA */
+        /* MEDIA */
         .media {
             display: grid;
             grid-template-rows: 1fr 1fr;
-            gap: 12px;
-            padding-left: 10px;
-            align-items: center;
+            gap: 152px;
         }
 
         img, video {
+    	    margin-top: 80px;
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-            transition: 0.25s ease;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
         }
 
         img:hover, video:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+            transform: scale(1.03);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.18);
         }
 
         /* FOOTER */
         .footer {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            background: #C7EBDD;
-            color: #000;
-            padding: 15px 10px;
+            background: #d7f2e7;
+            padding: 20px 10px;
+            border-top: 1px solid #c4e6d9;
             text-align: center;
-            align-items: center;
-            font-size: 1rem;
-            border-top: 1px solid #bfe3d6;
-        }
-
-        .footer > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.08rem;
         }
 
         .footer h2 {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             font-weight: 600;
         }
 
         a {
-            font-weight: 600;
-            color: #16697A;
+            color: #145e6e;
             text-decoration: none;
-            transition: 0.2s ease;
+            font-weight: 600;
         }
 
         a:hover {
-            color: #0d3b44;
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="grid-container">
-        <div class="title">
-            <h1>SkySync_Transit</h1>
-        </div>
-
-        <div class="content">
-            <div class="text-description">
-
-                <p><span class="title_content">DATASET</span>
-                The system integrates bus timetables (108 & 339), live weather conditions, walking-time calculations, and CE course timetable data.<br><br>
-                It uses:<br>
-                • Timetable API & MQTT topics<br>
-                • Weather + temperature API<br>
-                • CE class schedule (13:00 end time) for bus recommendation
-                </p>
-
-                <p><span class="title_content">DATA DEVICE (Physical)</span>
-                The physical device includes an ESP8266, rotary angle sensor, MG90S servo pointer, LCD (Grove RGB Backlight), and LED strip (BTF 5V 60LED/m).<br><br>
-                It visually displays:<br>
-                • Recommended bus after class<br>
-                • Walking time based on weather & temperature<br>
-                • Bus timetable (Aquatic Centre / Stratford)<br>
-                • Urgency levels via LED color changes<br><br>
-                The device auto-detects the selected bus (108 or 339) and fetches real-time data.
-                </p>
-
-                <p><span class="title_content">DATA DEVICE (Digital Twin)</span>
-                The digital twin replicates the device dashboard and provides:<br>
-                • Extended weather info<br>
-                • Extra bus options<br>
-                • Travel advice<br>
-                • Live gauge pointer movement<br><br>
-                Users can switch views by scanning specific images.
-                </p>
-
-                <p><span class="title_content">HOW TO USE</span>
-                • Power on the device — bus selection is detected automatically.<br>
-                • Timetable + weather + walking time load instantly.<br>
-                • LCD shows recommended bus; pointer moves accordingly.<br>
-                • LED strip visualizes urgency.<br>
-                • Digital twin available for enhanced interaction.
-                </p>
-
-            </div>
-
-            <div class="media">
-                <img src="assets/images/dashboard.png" alt="Device Dashboard Image">
-                <video src="assets/images/demo.mp4" controls></video>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="footer-title">
-                <h2>CE 2024 - 2025</h2>
-            </div>
-            <div class="group-name">
-                <p>Group MUJI</p>
-            </div>
-            <div class="github-link">
-                <a target="_blank" href="https://github.com/CynthiaZHANGovo/casa0019_MUJI">GitHub Link</a>
-            </div>
-        </div>
-
+<div class="container">
+    <div class="header">
+        <h1>SkySync_Transit</h1>
     </div>
+
+    <div class="content">
+        <div class="text-block">
+            <div class="section-title">DATASET</div>
+            <p>The system integrates bus timetables (108 & 339), live weather conditions, walking-time calculations, and CE course timetable data.<br><br>
+            Sources include:<br>
+            • Timetable API & MQTT topics<br>
+            • Weather + temperature API<br>
+            • CE class schedule (13:00 end time) for optimised bus recommendations</p>
+
+            <div class="section-title">DATA DEVICE (Physical)</div>
+            <p>The device features an ESP8266, rotary angle sensor, MG90S servo pointer, an RGB LCD, and an LED strip.<br><br>
+            It displays:<br>
+            • Recommended post-class bus<br>
+            • Walking time based on weather<br>
+            • Timetables (Aquatic Centre / Stratford)<br>
+            • Urgency intensity via LED colours<br><br>
+            Auto-detects bus line selection for real‑time updates.</p>
+
+            <div class="section-title">DATA DEVICE (Digital Twin)</div>
+            <p>The digital twin mirrors the physical dashboard and adds:<br>
+            • Extended weather data<br>
+            • More bus alternatives<br>
+            • Travel suggestions<br>
+            • Live pointer movement<br><br>
+            Users can toggle views by scanning preset images.</p>
+
+            <div class="section-title">HOW TO USE</div>
+            <p>• Power on — bus line is automatically detected.<br>
+            • Timetable, weather, and walking time load instantly.<br>
+            • LCD shows recommended bus; servo pointer adjusts accordingly.<br>
+            • LED strip indicates urgency level.<br>
+            • Digital twin available for extended interaction.</p>
+        </div>
+
+        <div class="media">
+            <img src="assets/images/dashboard.png" alt="Device Dashboard Image">
+            <video src="assets/images/demo.mp4" controls></video>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div><h2>CE 2024 - 2025</h2></div>
+        <div><p>Group MUJI</p></div>
+        <div><a target="_blank" href="https://github.com/CynthiaZHANGovo/casa0019_MUJI">GitHub Link</a></div>
+    </div>
+</div>
 </body>
 </html>
