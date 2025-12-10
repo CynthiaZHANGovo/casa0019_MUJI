@@ -8,69 +8,118 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background-color: #e9ecef; /* softer neutral background */
+            font-family: "Helvetica Neue", Arial, sans-serif;
         }
+
         .grid-container {
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: auto auto auto;
-            gap: 1px;
-            padding: 1px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 70vw;
-            margin: 0 auto;
+            gap: 0;
+            padding: 0;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+            width: 72vw;
+            overflow: hidden;
         }
-        .title, .footer {
-            grid-column: 1 / -1;
-            background-color: #89CFF0; /* Baby Blue */
+
+        /* HEADER */
+        .title {
+            background: linear-gradient(135deg, #7DB8DA 0%, #A3D3E6 100%);
             color: #fff;
-            padding-left: 10px;
+            padding: 20px 25px;
         }
+        .title h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* CONTENT */
         .content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            background-color: #B2D8D8; /* Light Cyan */
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 0;
+            background-color: #F5FAFA;
             color: #000;
+            padding: 20px 20px 30px;
         }
+
         .text-description {
-            word-wrap: break-word;
-            padding: 10px;
+            padding-right: 20px;
+            line-height: 1.55;
         }
+
+        .title_content {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #236477;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        /* MEDIA AREA */
         .media {
             display: grid;
             grid-template-rows: 1fr 1fr;
-            padding: 4px;
-            gap: 5px;
+            gap: 12px;
+            padding-left: 10px;
             align-items: center;
         }
+
+        img, video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+            transition: 0.25s ease;
+        }
+
+        img:hover, video:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+
+        /* FOOTER */
         .footer {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            background-color: #88D8B0; /* Mint Green */
+            background: #C7EBDD;
             color: #000;
+            padding: 15px 10px;
+            text-align: center;
+            align-items: center;
+            font-size: 1rem;
+            border-top: 1px solid #bfe3d6;
         }
+
         .footer > div {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        img, video {
-            max-width: 100%;
-            height: auto;
+
+        .footer h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
+
         a {
-            font-weight: bold;
-            color: #ffffff;
+            font-weight: 600;
+            color: #16697A;
+            text-decoration: none;
+            transition: 0.2s ease;
         }
-        .title_content {
-            font-size: 1.2em; 
-            font-weight: bold;
-            margin-bottom: 15px; 
-            display: block;
+
+        a:hover {
+            color: #0d3b44;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -79,45 +128,43 @@
         <div class="title">
             <h1>SkySync_Transit</h1>
         </div>
+
         <div class="content">
             <div class="text-description">
 
-                <p><span class="title_content">DATASET<br/></span>
-                The system integrates bus timetables (108 & 339), live weather conditions, walking-time calculations, and CE course timetable data.  
-                It uses:  
-                <br>• Timetable API & MQTT topics  
-                <br>• Weather + temperature API  
-                <br>• CE class schedule (13:00 end time) for bus recommendation  
+                <p><span class="title_content">DATASET</span>
+                The system integrates bus timetables (108 & 339), live weather conditions, walking-time calculations, and CE course timetable data.<br><br>
+                It uses:<br>
+                • Timetable API & MQTT topics<br>
+                • Weather + temperature API<br>
+                • CE class schedule (13:00 end time) for bus recommendation
                 </p>
 
-                <p><span class="title_content">DATA DEVICE (Physical)<br/></span>
-                The physical device includes an ESP8266, rotary angle sensor, MG90S servo pointer, LCD (Grove RGB Backlight), and LED strip (BTF 5V 60LED/m).  
-                <br><br>
-                It visually displays:  
-                • Recommended bus after class  
-                • Walking time based on weather & temperature  
-                • Bus timetable (Aquatic Centre / Stratford)  
-                • Urgency levels via LED color changes  
-                <br><br>
-                The device auto-detects the selected bus (108 or 339) and fetches real-time data using APIs and MQTT.
+                <p><span class="title_content">DATA DEVICE (Physical)</span>
+                The physical device includes an ESP8266, rotary angle sensor, MG90S servo pointer, LCD (Grove RGB Backlight), and LED strip (BTF 5V 60LED/m).<br><br>
+                It visually displays:<br>
+                • Recommended bus after class<br>
+                • Walking time based on weather & temperature<br>
+                • Bus timetable (Aquatic Centre / Stratford)<br>
+                • Urgency levels via LED color changes<br><br>
+                The device auto-detects the selected bus (108 or 339) and fetches real-time data.
                 </p>
 
-                <p><span class="title_content">DATA DEVICE (Digital Twin)<br/></span>
-                The digital twin replicates the physical gauge dashboard and provides:  
-                <br>• Detailed weather info  
-                <br>• Extended bus options  
-                <br>• Travel advice  
-                <br>• Interactive gauge showing pointer movement  
-                <br><br>
-                It also allows users to scan images to switch between different bus-line views.
+                <p><span class="title_content">DATA DEVICE (Digital Twin)</span>
+                The digital twin replicates the device dashboard and provides:<br>
+                • Extended weather info<br>
+                • Extra bus options<br>
+                • Travel advice<br>
+                • Live gauge pointer movement<br><br>
+                Users can switch views by scanning specific images.
                 </p>
 
-                <p><span class="title_content">HOW TO USE<br/></span>
-                • Power on the device — bus selection is detected automatically.  
-                • System fetches timetable + weather + walking time.  
-                • LCD shows recommended bus; pointer moves to the correct gauge segment.  
-                • LED strip visualizes urgency.  
-                • Digital twin can be used for expanded views and interaction.  
+                <p><span class="title_content">HOW TO USE</span>
+                • Power on the device — bus selection is detected automatically.<br>
+                • Timetable + weather + walking time load instantly.<br>
+                • LCD shows recommended bus; pointer moves accordingly.<br>
+                • LED strip visualizes urgency.<br>
+                • Digital twin available for enhanced interaction.
                 </p>
 
             </div>
@@ -133,7 +180,7 @@
                 <h2>CE 2024 - 2025</h2>
             </div>
             <div class="group-name">
-                <p>Group SkySync_Transit</p>
+                <p>Group MUJI</p>
             </div>
             <div class="github-link">
                 <a target="_blank" href="https://github.com/CynthiaZHANGovo/casa0019_MUJI">GitHub Link</a>
