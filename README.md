@@ -138,7 +138,7 @@ Both APIs and MQTT provide pre-calculated results:
 
 ### CE Course Timetable Integration
 - Ensures bus recommendation fits UCL students’ real class schedules  
-- The system chooses the next bus *after* class end time (1 PM)
+- The system chooses the next bus *after* class end time
 
 ---
 
@@ -162,7 +162,6 @@ Both APIs and MQTT provide pre-calculated results:
 5. System calculates estimated walking time and bus recommendation.  
 6. Data is displayed via LCD, pointer gauge, and LED urgency indicator.  
 7. Digital twin shows additional details for debugging or demonstration.
-8. 
 ---
 
 ## System Flow
