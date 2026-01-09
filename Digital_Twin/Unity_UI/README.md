@@ -88,7 +88,7 @@
 
 ---
 
-## 6. Software, Data & Technologies（≈300 words）
+## 6. Software, Data & Technologies
 
 The data transmission portion of this project primarily relies on the MQTT protocol to transmit signals to the assembled electronic devices and on the API to transmit data to the digital twin system. The project mainly established three MQTT topics for devices to subscribe to: the timetables for bus routes 339 and 108, and the current London temperature and estimated walking time to the station. The API also provides the same three types of data. Using these three datasets, the digital twin and devices can effectively acquire data and display it clearly and efficiently.
 
@@ -153,7 +153,7 @@ To address these shortcomings, future updates to the project will focus on two a
 
 - Physical data visualisation 的意义
 
-##Reference
+## Reference
 
 Paudyal, K.R., Shakya, R. and Upadhayaya, J. (2025) ‘Spatiotemporal PM2.5 estimation in Kathmandu using Deep Learning with OpenMeteo and NASA merra-2 data: Performance benchmarking against machine learning model’, International Journal on Engineering Technology, 3(1), pp. 36–45. 
 
