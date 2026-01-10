@@ -161,3 +161,5 @@ Dunn, R.A., Shaw, W.D. and Trousdale, M.A., 2012. The effect of weather on walki
 
 Hercog, D. et al. (2023) ‘Design and implementation of ESP32-based IOT devices’, Sensors, 23(15), p. 6739. doi:10.3390/s23156739. 
 
+Batty, M. (2013) *The new science of cities*. Cambridge, MA: MIT Press.
+
