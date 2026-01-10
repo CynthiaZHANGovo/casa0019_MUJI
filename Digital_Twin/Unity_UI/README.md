@@ -155,11 +155,11 @@ To address these shortcomings, future updates to the project will focus on two a
 
 ## Reference
 
-*Paudyal, K.R., Shakya, R. and Upadhayaya, J. (2025) ‘Spatiotemporal PM2.5 estimation in Kathmandu using Deep Learning with OpenMeteo and NASA merra-2 data: Performance benchmarking against machine learning model’, International Journal on Engineering Technology, 3(1), pp. 36–45. *
+*Paudyal, K.R., Shakya, R. and Upadhayaya, J. (2025) ‘Spatiotemporal PM2.5 estimation in Kathmandu using Deep Learning with OpenMeteo and NASA merra-2 data: Performance benchmarking against machine learning model’, International Journal on Engineering Technology, 3(1), pp. 36–45.*
 
 *Dunn, R.A., Shaw, W.D. and Trousdale, M.A., 2012. The effect of weather on walking behavior in older adults. Journal of Aging and Physical Activity, 20(1), pp.80-92.*
 
-*Hercog, D. et al. (2023) ‘Design and implementation of ESP32-based IOT devices’, Sensors, 23(15), p. 6739. doi:10.3390/s23156739. *
+*Hercog, D. et al. (2023) ‘Design and implementation of ESP32-based IOT devices’, Sensors, 23(15), p. 6739. doi:10.3390/s23156739.*
 
 *Batty, M. (2013) The new science of cities. Cambridge, MA: MIT Press.*
 
