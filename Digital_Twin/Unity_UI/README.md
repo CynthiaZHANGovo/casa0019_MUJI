@@ -63,7 +63,19 @@ The **gauge instrument panel** is integrated into this structure, combining prin
 
 [figure]
 
-### 4.4 Data Visualisation Logic (Physical)
+### 4.3 Data Visualisation Logic (Physical)
+
+The rotary angle sensor is wired to the ESP8266’s A0, where its ratiometric voltage output is sampled and converted into discrete control state. The Grove RGB LCD shares the controller’s I²C bus (SDA/SCL), while enabling dual control of text and backlight through the same serial channel. The MG90S servo is attached to a PWM-capable pin so that duty-cycle modulation directly defines its mechanical output angle. 
+
+The WS2812 LED strip is driven from a single digital pin with microsecond-scale timing accuracy. Because Wi-Fi, MQTT parsing and GPIO servicing run concurrently on the ESP8266, update jitter is mitigated by sequencing LED writes against network activity. 
+
+The pointer is driven by an MG90S micro servo controlled by the ESP8266. Real-time weather and temperature data are first processed in the backend and discretised into **24 weather–temperature zones** on the dial (from sunny and mild on the left to snowy and harsh on the right). The backend sends the index of the active zone as an integer `segmentIndex` via MQTT.
+
+On the physical gauge, only the calibrated arc between approximately **33° and 147°** is used. However, the firmware positions the pointer at the centre of each zone rather than at the boundary, producing a smoother, more readable pointer distribution. This 114° span is divided into 24 equal zones, and the pointer is positioned at the **centre of each zone**, which yields an effective step of about **4.25° per segment**. This mapping is hard-coded in the firmware as: 
+
+​                                                            **angle = 180° − 4.25° × segmentIndex.**
+
+After clamping the result to the physical dial range, the ESP8266 outputs the corresponding PWM signal to the MG90S, moving the pointer cleanly to the selected weather–temperature region. Furthermore, each pointer movement first returns to the leftmost position before repositioning.
 
 
 
