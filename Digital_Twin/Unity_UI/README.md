@@ -69,13 +69,23 @@ The **gauge instrument panel** is integrated into this structure, combining prin
 
 ## 5. Digital Twin & Dashboard Design（≈300 words）
 
-- Digital twin 与 physical device 同步
+## 5.1 Digital Twin Interface
 
-- Gauge zones & segments&#x20;
+The SkySync_Transit digital twin is implemented in Unity as an AR screen based on a **World Space Canvas**. The main UI root, **TransitHubCanvas**, follows a layout first prototyped in Figma, with four panels: “NEXT BUSES FROM UCL EAST”, a temperature and outfit suggestion panel, a current weather panel, and a reserved data-visualisation area. During early development, random values were injected into these panels to test bindings and interactions before the real APIs were connected. 
 
-- “更详细信息”
+Live data is then provided by “BusAPIManager” and ”WeatherAPIManager“, which call the timetable and current-walk style endpoints, deserialize the JSON into typed models (from APIDataModels), and update TextMeshPro fields in the bus, temperature and weather panels. 
 
-- 图像识别 ( bus line switching ）
+To support both routes within one interface, “MainContent” contains two structurally identical bus panels, **`BusPane339`** and **`BusPane108`**, which share the same layout but are bound to different timetable data. Weather and temperature modules remain permanently active, while simple visibility logic switches between the two bus panels so that scanning 339 or 108 selects the corresponding route without duplicating the rest of the UI. 
+
+
+
+## 5.2 Physical Device Synchronisation & Deployment
+
+ To match the physical device and avoid overwhelming the camera view, the ”TransitHubCanvas“ Rect Transform is uniformly scaled down (e.g. all axes ≈ 0.0005), keeping proportions consistent in AR , and ARCore enabled in XR Plug-in Management, allowing the digital twin to run on Android phones alongside the hardware system.
+
+## 5.3 Image Recognition
+
+ Image recognition is implemented with AR Foundation. A reference image library, “BusRoutesImageLibrary”, stores the printed markers **`QR_339`** and **`QR_108`** with their physical sizes and is assigned to “ARTrackedImageManager” on the XR Origin. A dedicated controller, “BusQRImageController”, listens to “trackedImagesChanged”, positions and rotates “TransitHubCanvas” so that the UI stands upright and floats slightly in front of the detected marker, and then toggles BusPane339 or BusPane108 based on “referenceImage.name”, while leaving the weather and temperature panels unchanged.
 
 ---
 
