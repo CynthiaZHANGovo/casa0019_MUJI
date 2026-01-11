@@ -75,9 +75,9 @@ On the physical gauge, only the calibrated arc between approximately **33° and 
 
 ​                                                            **angle = 180° − 4.25° × segmentIndex.**
 
-After clamping the result to the physical dial range, the ESP8266 outputs the corresponding PWM signal to the MG90S, moving the pointer cleanly to the selected weather–temperature region. Furthermore, each pointer movement first returns to the leftmost position before repositioning.
+After clamping the result to the physical dial range, the ESP8266 outputs the corresponding PWM signal to the MG90S, moving the pointer cleanly to the selected weather–temperature region. Furthermore, each pointer movement first returns to the leftmost position before repositioning. So in the end, we obtained such a complete physical model.
 
-
+![UI](https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/physical_device/bus.jpg)
 
 ## 5. Digital Twin & Dashboard Design（≈300 words）
 
