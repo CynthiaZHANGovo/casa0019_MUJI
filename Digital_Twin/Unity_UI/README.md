@@ -122,8 +122,8 @@ The data transmission portion of this project primarily relies on the MQTT proto
 
 More precisely, the data in the project mainly comes from publicly available data on authoritative websites. The timetable information for bus routes 339 and 108 is entirely sourced from the TFL website. Additionally, the London weather and temperature information is obtained from the Open-Meteo website, ensuring overall accuracy and reliability (Paudyal, Shakya and Upadhayaya, 2025). The data printed in this project is formatted as shown in the image below.
 <p align="center">
-  <img src="../../Backend_code_section/image.png" width="45%">
-  <img src="../../Backend_code_section/image1.png" width="45%">
+  <img src="https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/Backend_code_section/image.png" width="45%">
+  <img src="https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/Backend_code_section/image1.png" width="45%">
 </p>
 
 
