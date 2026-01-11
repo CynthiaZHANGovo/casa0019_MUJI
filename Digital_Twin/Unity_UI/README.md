@@ -102,6 +102,8 @@ This virtual model is dynamically driven by real-time MQTT data. Unity subscribe
 
 This process forms a real-time feedback loop. When data is updated on the MQTT server, the pointer on the bus in the AR environment is updated simultaneously, allowing users to intuitively perceive changes in external information within the AR scene. By binding the model to an image target, scaling it appropriately, and performing simple visual customizations, we have constructed such a complete digital twin.
 
+![UI](https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/Digital_Twin/Picture/All.png)
+
 
 
 ---
