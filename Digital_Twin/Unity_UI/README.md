@@ -33,13 +33,13 @@ The project focuses on the integration of bus timetable data, real-time weather 
 
 ## 3. System Overview & Design Concept（≈250 words）
 
-- Physical device + Digital twin 的设计逻辑
+### 3.1 Physical System
 
-- API / MQTT / Sensors
+The physical part of SkySync_Transit is designed as a self-contained, real-time indicator of travel conditions. An **ESP8266 microcontroller** forms the core of the system, reading inputs from temperature, humidity and gas sensors as well as the rotary angle sensor that selects the active bus route (108 or 339). It connects to Wi-Fi to fetch live timetables and weather data, combines these with local sensor readings, and computes key parameters such as current conditions, estimated walking time and a recommended bus. These values are published via a small set of **MQTT topics**, which are subscribed to by the servo motor, LED strip and LCD display. In this way, the pointer, backlit display and colour-coded LEDs act as an analogue “dashboard” that visualises bus urgency and walking time using the same underlying logic. The physical system is therefore responsible for sensing, decision-making and embodied feedback in the classroom.
 
-- Digital Twin（debug / scalability / demo）
+### 3.2 Digital Twin System
 
-- System flow diagram
+The digital part of SkySync_Transit is implemented as an AR **digital twin** in Unity. A lightweight backend exposes the same information used by the ESP8266 through RESTful **APIs**, including timetable endpoints for routes 339 and 108 and a `current-walk` style endpoint that wraps the weather-dependent walking-time model. Unity scripts such as `BusAPIManager` and `WeatherAPIManager` call these APIs, deserialize JSON into typed data models, and update the **TransitHubCanvas** interface, which contains panels for “NEXT BUSES FROM UCL EAST”, current weather, temperature and outfit suggestion, and data visualisation. The digital twin mirrors the behaviour of the physical gauge but is easier to modify, scale and debug, for example by testing new layouts or visual encodings without changing the hardware. Together, the MQTT-driven device and API-driven AR interface form a single system where both physical and digital views are always consistent and based on the same data.
 
 ---
 
