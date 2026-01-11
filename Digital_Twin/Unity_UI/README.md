@@ -76,7 +76,7 @@ The SkySync_Transit digital twin is implemented in Unity as an AR screen based o
 Live data is then provided by “BusAPIManager” and ”WeatherAPIManager“, which call the timetable and current-walk style endpoints, deserialize the JSON into typed models (from APIDataModels), and update TextMeshPro fields in the bus, temperature and weather panels. 
 
 To support both routes within one interface, “MainContent” contains two structurally identical bus panels, **`BusPane339`** and **`BusPane108`**, which share the same layout but are bound to different timetable data. Weather and temperature modules remain permanently active, while simple visibility logic switches between the two bus panels so that scanning 339 or 108 selects the corresponding route without duplicating the rest of the UI. 
- 
+
 
 ## 5.2 Physical Device Synchronisation & Deployment
 
@@ -85,6 +85,24 @@ To support both routes within one interface, “MainContent” contains two stru
 ## 5.3 Image Recognition
 
  Image recognition is implemented with AR Foundation. A reference image library, “BusRoutesImageLibrary”, stores the printed markers **`QR_339`** and **`QR_108`** with their physical sizes and is assigned to “ARTrackedImageManager” on the XR Origin. A dedicated controller, “BusQRImageController”, listens to “trackedImagesChanged”, positions and rotates “TransitHubCanvas” so that the UI stands upright and floats slightly in front of the detected marker, and then toggles BusPane339 or BusPane108 based on “referenceImage.name”, while leaving the weather and temperature panels unchanged.
+
+## 5.4 Data synchronization and rendering
+
+We use MQTT to fetch backend data, with the lower HUD panel driven entirely by real-time streams to stay synced with the physical system. The system subscribes to three topics — current weather and travel advice, route-specific bus recommendations, and ~30 days of walking-history data. Payloads are received through an M2MQTT client, parsed into strongly typed objects via JsonUtility, and safely handed off to the Unity main thread using simple state flags, since MQTT callbacks execute in the background.
+
+To provide long-term insight rather than momentary status, the data-visualisation panel procedurally generates UI elements at runtime. A bar-chart system instantiates prefabs, scales them according to walking duration, and interpolates colour based on average temperature, converting raw telemetry into compact visual patterns.
+
+Text-based displays are equally data-driven. The bus timetable now uses a three-column format (London Aquatics → Stratford City → recommendation), improving readability without modifying the source format. All UI panels refresh through event-driven logic so that each JSON packet actively updates the interface in real time rather than merely replacing placeholder values.
+
+## 5.5 Realization of the Augmented 3D Digital Twin Model
+
+Digital twins are not only reflected in the interface data layer but also achieved by placing a corresponding 3D bus model in the AR environment. The vehicle's onboard model from the physical device is imported into Unity as a prefab and acts as a child object of the detected QR code image. It automatically inherits the QR code's spatial position and orientation, thus appearing as a fixed object in the real-world scene and moving naturally with the user's viewpoint.
+
+This virtual model is dynamically driven by real-time MQTT data. Unity subscribes to walking status topics and parses messages, extracting the segmentIndex and mapping it to a specific angle to control the rotation of the instrument panel pointer. The control script records the model's basic posture and overlays calculated offsets to ensure the animation is always geometrically aligned with the model. Pointer movement is smoothed using interpolation to avoid jumps and present continuous, natural state changes. We use the same dashboard as the physical system to ensure the pointer's position in the AR scene is consistent with the physical system.
+
+This process forms a real-time feedback loop. When data is updated on the MQTT server, the pointer on the bus in the AR environment is updated simultaneously, allowing users to intuitively perceive changes in external information within the AR scene. By binding the model to an image target, scaling it appropriately, and performing simple visual customizations, we have constructed such a complete digital twin.
+
+
 
 ---
 
@@ -126,7 +144,7 @@ For weather-related MQTT topics and APIs, the first line prints the current temp
 
          *   Documentation & GitHub management
 
-  ***
+***
 
 ## 8. What Worked & What Didn’t & Future Improvements
 
