@@ -77,6 +77,9 @@ Live data is then provided by “BusAPIManager” and ”WeatherAPIManager“, w
 
 To support both routes within one interface, “MainContent” contains two structurally identical bus panels, **`BusPane339`** and **`BusPane108`**, which share the same layout but are bound to different timetable data. Weather and temperature modules remain permanently active, while simple visibility logic switches between the two bus panels so that scanning 339 or 108 selects the corresponding route without duplicating the rest of the UI. 
 
+![598683a55c31dfe2d6158bad5c374372](https://github.com/user-attachments/assets/421314c9-d5ab-4ae2-8ec0-af5407408ad8)
+![f36d4a4a63655ac7742713173d06e43a](https://github.com/user-attachments/assets/957652f0-7cb7-47d5-a271-5140cb8b07b1)
+
 
 
 ## 5.2 Physical Device Synchronisation & Deployment
