@@ -55,13 +55,9 @@ A **Grove LCD RGB Backlight display** presents estimated walking time and bus ti
 
 ### 4.2 3D-Printed Structure and Gauge Panel
 
-The physical device is housed within a **3D-printed structure** composed of two main parts. The **transparent top section** allows the LED strip to clearly display the walking route from One Pool Street to the destination, providing a visual context for dynamic data. The second part is a **custom-built red London double-decker bus model**, which serves as a tangible reference for the selected bus route (as shown in Figure 1).
-
-[figure]
+The 3D-printed structure has two main parts. The **transparent top** allows the LED strip to display the walking route to the destination. The second part is a **custom-built model of a classic London bus**, painted in red, which serves as a tangible reference for the selected bus route.  
 
 The **gauge instrument panel** is integrated into this structure, combining printed graphics and lamination to create a clear and durable interface (as shown in Figure 2). It visualizes estimated walking time using a combination of weather zones—Sunny, Cloudy, Rainy, and Snowy—and corresponding temperature segments. A servo-driven pointer, LED strip, and LCD display work together to convey time-sensitive information intuitively, allowing users to quickly perceive walking time and bus urgency. For example, Rainy conditions at 8.8°C correspond to a moderate walking time of approximately 6.33 minutes.
-
-[figure]
 
 ### 4.3 Data Visualisation Logic (Physical)
 
