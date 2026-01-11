@@ -24,7 +24,7 @@
 
 ## 2. Project Context & Motivation
 
-SkySync_Transit was developed in response to a common situation encountered by UCL students when making commuting decisions immediately after class. Many students regularly travel to Stratford and surrounding areas using bus services. These decisions are often time-sensitive, as students need to leave shortly after a class ends in order to select an appropriate bus. Missing a bus may lead to additional waiting time or a less efficient journey, particularly during busy periods. This highlights the need for clearer and more immediate representations of travel-related information (Batty, 2013).
+SkySync_Transit was developed for UCL students when making commuting decisions immediately after class. Many students regularly travel to Stratford and surrounding areas using bus services. These decisions are often time-sensitive, as students need to leave shortly after a class ends in order to select an appropriate bus. Missing a bus may lead to additional waiting time or a less efficient journey, particularly during busy periods. This highlights the need for clearer and more immediate representations of travel-related information (Batty, 2013).
 
 The project focuses on the integration of bus timetable data, real-time weather conditions, and walking time estimates, as these factors jointly influence commuting decisions but are rarely considered together in an intuitive manner (Ma et al., 2019). While existing mobile applications provide access to such information, they often require active searching and increased cognitive effort from users, particularly in time-constrained situations (Aliannejadi et al., 2019). SkySync_Transit addresses this gap by combining these datasets into a single, coherent system that supports faster decision-making through visual and physical feedback.
 
@@ -43,27 +43,29 @@ The project focuses on the integration of bus timetable data, real-time weather 
 
 ---
 
-## 4. Physical Device Design & Implementation（≈400 words）
+## 4. Physical Device Design & Implementation
 
 ### 4.1 Hardware Design
 
-- ESP8266&#x20;
+The physical device of SkySync_Transit provides a tangible, real-time representation of weather conditions, estimated walking time, and bus urgency.
+An **ESP8266 microcontroller** is used as the main controller for the system. It connects to Wi-Fi to access external APIs and MQTT topics, processes incoming data, and controls all input and output components, including sensors, the servo motor, LED strip, and LCD display.
+User input is handled through a **Rotary Angle Sensor v1.2**, which allows users to select between bus routes (e.g. 108 or 339). The selected route is detected automatically and triggers requests to the corresponding bus timetable API.
+A **MG90S servo motor** drives an analog-style pointer on the gauge interface. The pointer position reflects a combination of weather conditions, temperature segments, and calculated walking time, providing a quick visual indication of travel conditions.
+A **Grove LCD RGB Backlight display** presents estimated walking time and bus timetable information retrieved from the API, and highlights the recommended bus based on the UCL CE course timetable. In addition, a **BTF 5V LED strip (60 LEDs/m)** visualises the urgency of catching the next bus using colour gradients that update dynamically according to timetable and walking-time calculations.
 
-- Rotary sensor ( input
+### 4.2 3D-Printed Structure and Gauge Panel
 
-- Servo + LED + LCD ( output
+The physical device is housed within a **3D-printed structure** composed of two main parts. The **transparent top section** allows the LED strip to clearly display the walking route from One Pool Street to the destination, providing a visual context for dynamic data. The second part is a **custom-built red London double-decker bus model**, which serves as a tangible reference for the selected bus route (as shown in Figure 1).
 
-- 3D 打印结构（route / gauge）
+[figure]
 
-### 4.2 Data Visualisation Logic（Physical）
+The **gauge instrument panel** is integrated into this structure, combining printed graphics and lamination to create a clear and durable interface (as shown in Figure 2). It visualizes estimated walking time using a combination of weather zones—Sunny, Cloudy, Rainy, and Snowy—and corresponding temperature segments. A servo-driven pointer, LED strip, and LCD display work together to convey time-sensitive information intuitively, allowing users to quickly perceive walking time and bus urgency. For example, Rainy conditions at 8.8°C correspond to a moderate walking time of approximately 6.33 minutes.
 
-- 指针 \= walking time & weather
+[figure]
 
-- LED \= urgency / time pressure
+### 4.4 Data Visualisation Logic (Physical)
 
-- LCD \= numerical & textual 补充
 
----
 
 ## 5. Digital Twin & Dashboard Design（≈300 words）
 
@@ -95,7 +97,7 @@ For weather-related MQTT topics and APIs, the first line prints the current temp
 
 ### 6.3 Tools & Platforms
 
-- Arduino / ESP8266
+**Arduino / ESP8266** serves as the core controller for the physical device, handling sensor inputs, LED and servo outputs, and communication with APIs and the MQTT broker.  
 
 - Unity / dashboard tools
 
