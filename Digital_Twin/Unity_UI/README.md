@@ -55,9 +55,9 @@ A **Grove LCD RGB Backlight display** presents estimated walking time and bus ti
 
 ### 4.2 3D-Printed Structure and Gauge Panel
 
-The 3D-printed structure has two main parts. The **transparent top** allows the LED strip to display the walking route to the destination. The second part is a **custom-built model of a classic London bus**, painted in red, which serves as a tangible reference for the selected bus route.  
+The 3D-printed structure has two main parts. The **transparent top** allows the LED strip to display the walking route to the destination, and incorporates a model of **One Pool Street**, combined with site data adapted from **CADMAPPER**, to ensure spatial accuracy. The second part is a custom-built model of a **classic London bus**, painted in red, which serves as a tangible reference for the selected bus route. The opaque base was designed with consideration for **sensor placement and component relationships**, ensuring stable integration of the hardware.
 
-The **gauge instrument panel** is integrated into this structure, combining printed graphics and lamination to create a clear and durable interface (as shown in Figure 2). It visualizes estimated walking time using a combination of weather zones—Sunny, Cloudy, Rainy, and Snowy—and corresponding temperature segments. A servo-driven pointer, LED strip, and LCD display work together to convey time-sensitive information intuitively, allowing users to quickly perceive walking time and bus urgency. For example, Rainy conditions at 8.8°C correspond to a moderate walking time of approximately 6.33 minutes.
+The **gauge instrument panel** is integrated into this structure, combining printed graphics and lamination to create a clear and durable interface. It visualizes estimated walking time using a combination of weather zones—Sunny, Cloudy, Rainy, and Snowy—and corresponding temperature segments. A servo-driven pointer, LED strip, and LCD display work together to convey time-sensitive information intuitively, allowing users to quickly perceive walking time and bus urgency. For example, Rainy conditions at 8.8°C correspond to a moderate walking time of approximately 6.33 minutes.
 
 ### 4.3 Data Visualisation Logic (Physical)
 
