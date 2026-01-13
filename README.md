@@ -32,6 +32,7 @@ Helps UCL students efficiently plan which bus to take after class, estimate walk
 - [Connection](#connection)
 - [Usage](#usage)
 - [Credits](#credits)
+- [GitHub Repository Structure](#github-repository-structure)
 - [License](#license)
 
 ---
@@ -43,6 +44,8 @@ SkySync_Transit allows UCL students to select a bus route using a rotary knob. B
 ---
 
 ## Physical Device
+
+![UI](https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/physical_device/bus.jpg)
 
 The physical device provides a tangible, real-time representation of weather conditions, walking time, and bus urgency. It includes:
 
@@ -78,6 +81,8 @@ The physical device provides a tangible, real-time representation of weather con
 ---
 
 ## Digital Twin
+
+![UI](https://raw.githubusercontent.com/CynthiaZHANGovo/casa0019_MUJI/main/Digital_Twin/Picture/All.png)
 
 The digital twin mirrors the behavior of the physical device and provides **more detailed data**:
 
@@ -171,6 +176,31 @@ Rotary Knob -> Detect Bus Number -> Fetch Bus Timetable (API/MQTT)
              -> Fetch Weather & Walking Time -> Calculate Estimated Travel Time 
              -> Physical Gauge + LCD + LED Output 
              -> Digital Twin Dashboard Rendering
+
+---
+
+## GitHub Repository Structure
+
+- **[Backend_code_section](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Backend_code_section)**  
+  Backend APIs for bus timetables, weather data, walking-time calculation, and CE timetable logic.
+
+- **[physical_device](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/physical_device)**  
+  Coding documents of physical device.
+
+- **[Digital_Twin](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Digital_Twin)**  
+  Files of digital twin.
+
+- **[Scripts](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Scripts)**  
+  C# scripts for API handling, MQTT communication, gauge animation, and UI logic.
+
+- **[Shell](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Shell)**  
+  3D-printable files for the physical enclosure and gauge mechanism.
+
+- **[Sensors_Testing](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Sensors_Testing)**  
+  Sensor testing code and calibration references.
+
+- **[Documents](https://github.com/CynthiaZHANGovo/casa0019_MUJI/tree/main/Documents)**  
+  Project notes, meeting minutes, and early design concepts.
 
 
 ---
